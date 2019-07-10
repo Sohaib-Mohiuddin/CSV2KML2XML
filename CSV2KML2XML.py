@@ -61,7 +61,6 @@ def fileConverter():
 
     for case in root.findall("./ProjectSubmission"):
         caseNum = case.get('id')
-        print(caseNum)
         kmldata = open("KML Files/" + caseNum + ".kml", "rb").read()
 
         kmlencoded = base64.b64encode(kmldata)
@@ -70,7 +69,7 @@ def fileConverter():
         
         locationFileElement = case.find("LocationFile")
 
-        if (locationFileElement.find("KLMdescription") == []):
+        if (locationFileElement.find("KLMdescription") == None):
             KLMdescriptionElement = ET.SubElement(locationFileElement, "KLMdescription")
             KLMdescriptionElement.text = "KML_" + caseNum
             KLMdescriptionElement.tail = "\n      "
@@ -121,6 +120,7 @@ def fileConverter():
         tree.write(inputfile.name) 
     
     message.config(text = "Task Completed!")
+    msg = messagebox.showinfo("XML File Modified", "The KML files have successfully been added to the XML")
 
 def askForFile():
     csvToKmlInfo()
