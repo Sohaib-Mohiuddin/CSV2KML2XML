@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="35">
+        <Style id="38">
+            <LineStyle id="39">
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="46">
+            <IconStyle id="47">
+                <color>ff00ffff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="48">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="51">
+            <IconStyle id="52">
+                <color>ff00ffff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="53">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="56">
+            <IconStyle id="57">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="58">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Placemark id="37">
+            <name>Outcome: Roads-King/Wellington; Outcome: Roads-Fanshawe College</name>
+            <styleUrl>#38</styleUrl>
+            <LineString id="36">
+                <coordinates>-81.14407,42.59012,35 -81.12005,43.00395,35</coordinates>
+                <altitudeMode>relativeToGround</altitudeMode>
+            </LineString>
+        </Placemark>
+        <Placemark id="41">
+            <name>Outcome: Roads-King/Wellington</name>
+            <description>Outcome: Improved capacity of public transit infrastructure - Indicator: Roads - Location Description: King/Wellington</description>
+            <Point id="40">
+                <coordinates>-81.14407,42.59012,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="43">
+            <name>Outcome: Roads-Fanshawe College</name>
+            <description>Outcome: Improved capacity of public transit infrastructure - Indicator: Roads - Location Description: Fanshawe College</description>
+            <Point id="42">
+                <coordinates>-81.12005,43.00395,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="45">
+            <name>Outcome: Better sidewalks/crosswalks/paths at and leading to transit stations/stops-King/Wellington</name>
+            <description>Outcome: Improved quality and/or safety of existing or future transit systems - Indicator: Better sidewalks/crosswalks/paths at and leading to transit stations/stops - Location Description: King/Wellington</description>
+            <styleUrl>#46</styleUrl>
+            <Point id="44">
+                <coordinates>-81.14407,42.59012,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="50">
+            <name>Outcome: Better sidewalks/crosswalks/paths at and leading to transit stations/stops-Fanshawe College</name>
+            <description>Outcome: Improved quality and/or safety of existing or future transit systems - Indicator: Better sidewalks/crosswalks/paths at and leading to transit stations/stops - Location Description: Fanshawe College</description>
+            <styleUrl>#51</styleUrl>
+            <Point id="49">
+                <coordinates>-81.12005,43.00395,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="55">
+            <name>Project Location: East London Link</name>
+            <description/>
+            <styleUrl>#56</styleUrl>
+            <Point id="54">
+                <coordinates>-81.13179,42.59249,0.0</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="60">
+        <Style id="63">
+            <LineStyle id="64">
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="71">
+            <IconStyle id="72">
+                <color>ff00ffff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="73">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="76">
+            <IconStyle id="77">
+                <color>ff00ffff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="78">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="81">
+            <IconStyle id="82">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="83">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Placemark id="62">
+            <name>Outcome: Roads-King/Wellington; Outcome: Roads-Ridout/King</name>
+            <styleUrl>#63</styleUrl>
+            <LineString id="61">
+                <coordinates>-81.14407,42.59012,35 -81.15123,42.58528,35</coordinates>
+                <altitudeMode>relativeToGround</altitudeMode>
+            </LineString>
+        </Placemark>
+        <Placemark id="66">
+            <name>Outcome: Roads-King/Wellington</name>
+            <description>Outcome: Improved capacity of public transit infrastructure - Indicator: Roads - Location Description: King/Wellington</description>
+            <Point id="65">
+                <coordinates>-81.14407,42.59012,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="68">
+            <name>Outcome: Roads-Ridout/King</name>
+            <description>Outcome: Improved capacity of public transit infrastructure - Indicator: Roads - Location Description: Ridout/King</description>
+            <Point id="67">
+                <coordinates>-81.15123,42.58528,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="70">
+            <name>Outcome: Better sidewalks/crosswalks/paths at and leading to transit stations/stops-King/Wellington</name>
+            <description>Outcome: Improved quality and/or safety of existing or future transit systems - Indicator: Better sidewalks/crosswalks/paths at and leading to transit stations/stops - Location Description: King/Wellington</description>
+            <styleUrl>#71</styleUrl>
+            <Point id="69">
+                <coordinates>-81.14407,42.59012,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="75">
+            <name>Outcome: Better sidewalks/crosswalks/paths at and leading to transit stations/stops-Ridout/King</name>
+            <description>Outcome: Improved quality and/or safety of existing or future transit systems - Indicator: Better sidewalks/crosswalks/paths at and leading to transit stations/stops - Location Description: Ridout/King</description>
+            <styleUrl>#76</styleUrl>
+            <Point id="74">
+                <coordinates>-81.15123,42.58528,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="80">
+            <name>Project Location: Downtown Loop</name>
+            <description/>
+            <styleUrl>#81</styleUrl>
+            <Point id="79">
+                <coordinates>-81.15159,42.59,0.0</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="127">
+        <Style id="130">
+            <IconStyle id="131">
+                <color>ff00ffff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="132">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="135">
+            <IconStyle id="136">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="137">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Placemark id="129">
+            <name>Outcome: Better sidewalks/crosswalks/paths at and leading to transit stations/stops-Approximate midpoint location of project</name>
+            <description>Outcome: Improved quality and/or safety of existing or future transit systems - Indicator: Better sidewalks/crosswalks/paths at and leading to transit stations/stops - Location Description: Approximate midpoint location of project</description>
+            <styleUrl>#130</styleUrl>
+            <Point id="128">
+                <coordinates>-81.226699,42.990315,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="134">
+            <name>Project Location: Dundas Street Old East Village Streetscape Improvements</name>
+            <description/>
+            <styleUrl>#135</styleUrl>
+            <Point id="133">
+                <coordinates>-81.226688,42.990315,0.0</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

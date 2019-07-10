@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="102">
+        <Style id="105">
+            <LineStyle id="106">
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="113">
+            <IconStyle id="114">
+                <color>ff00ffff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="115">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="118">
+            <IconStyle id="119">
+                <color>ff00ffff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="120">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="123">
+            <IconStyle id="124">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="125">
+                    <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Placemark id="104">
+            <name>Outcome: Roads-King/Wellington; Outcome: Roads-Whiteoaks Mall</name>
+            <styleUrl>#105</styleUrl>
+            <LineString id="103">
+                <coordinates>-81.14407,42.59012,35 -81.13164,42.55532,35</coordinates>
+                <altitudeMode>relativeToGround</altitudeMode>
+            </LineString>
+        </Placemark>
+        <Placemark id="108">
+            <name>Outcome: Roads-King/Wellington</name>
+            <description>Outcome: Improved capacity of public transit infrastructure - Indicator: Roads - Location Description: King/Wellington</description>
+            <Point id="107">
+                <coordinates>-81.14407,42.59012,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="110">
+            <name>Outcome: Roads-Whiteoaks Mall</name>
+            <description>Outcome: Improved capacity of public transit infrastructure - Indicator: Roads - Location Description: Whiteoaks Mall</description>
+            <Point id="109">
+                <coordinates>-81.13164,42.55532,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="112">
+            <name>Outcome: Better sidewalks/crosswalks/paths at and leading to transit stations/stops-King/Wellington</name>
+            <description>Outcome: Improved quality and/or safety of existing or future transit systems - Indicator: Better sidewalks/crosswalks/paths at and leading to transit stations/stops - Location Description: King/Wellington</description>
+            <styleUrl>#113</styleUrl>
+            <Point id="111">
+                <coordinates>-81.14407,42.59012,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="117">
+            <name>Outcome: Better sidewalks/crosswalks/paths at and leading to transit stations/stops-Whiteoaks Mall</name>
+            <description>Outcome: Improved quality and/or safety of existing or future transit systems - Indicator: Better sidewalks/crosswalks/paths at and leading to transit stations/stops - Location Description: Whiteoaks Mall</description>
+            <styleUrl>#118</styleUrl>
+            <Point id="116">
+                <coordinates>-81.13164,42.55532,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="122">
+            <name>Project Location: Wellington Gateway</name>
+            <description/>
+            <styleUrl>#123</styleUrl>
+            <Point id="121">
+                <coordinates>-81.13491,42.57301,0.0</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>
