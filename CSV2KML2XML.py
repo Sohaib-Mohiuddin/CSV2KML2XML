@@ -55,7 +55,10 @@ listbox.config(yscrollcommand = scrollbar.set)
 
 def fileConverter():
     kmlToXmlInfo()
-    inputfile = askopenfile()
+    try:
+        inputfile = askopenfile()
+    except Exception:
+        msg = messagebox.showwarning("Warning", "You Must Select an XML File")
     tree = ET.parse(inputfile)
     root = tree.getroot()
 
@@ -124,7 +127,13 @@ def fileConverter():
 
 def askForFile():
     csvToKmlInfo()
-    inputfile = list(csv.reader(askopenfile()))
+    listbox.delete(0, END)
+
+    try:
+        inputfile = list(csv.reader(askopenfile()))
+    except Exception:
+        msg = messagebox.showwarning("Warning", "You Must Select a CSV File")
+    
     a = []
     dataList = []
     matchingGroup = []
@@ -170,7 +179,10 @@ def askForFile():
 
                 if(prev[0] != ""):
                     if (data[6] == "Pass"):
-                        kml.save("KML Files/" + prev[0] + ".kml")
+                        try:
+                            kml.save("KML Files/" + prev[0] + ".kml")
+                        except Exception:
+                            msg = messagebox.showerror("Error", "The KML For Case #: " + prev[0] + " Has Not Been Generated/Generated Correctly")
                     del dataList[0:]
 
             dataList.append(row)
@@ -196,7 +208,10 @@ def askForFile():
                         kml.newpoint(name = data[1], description = data[2], coords = [(data[4],data[3])])
 
                 if (data[6] == "Pass"):
-                    kml.save("KML Files/" + prev[0] + ".kml")
+                    try:
+                        kml.save("KML Files/" + prev[0] + ".kml")
+                    except Exception:
+                        msg = messagebox.showerror("Error", "The KML For Case #: " + prev[0] + " Has Not Been Generated/Generated Correctly")
                 elif (data[6] == "Fail"):
                     a += ["Data validation failed: ..." + caseNum[-4:]]
                     failedGroup += caseNum
