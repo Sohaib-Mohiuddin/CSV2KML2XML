@@ -8,6 +8,7 @@ import csv
 import array as arr
 import IPython
 import time
+import logging
 
 from PIL import Image, ImageTk
 from io import StringIO
@@ -34,7 +35,7 @@ frame.pack(anchor = "center", padx = "15")
 
 message = Label(tk, text = "KML files must be located in the '/KML Files' folder", height = 1, width = 50)
 message.config(font = ("Verdana", 10), background = "#332f31", fg = "#ffffff")
-message.place(x = 0, y = 500)
+message.place(x = 0, y = 510)
 
 listbox_info = Label(tk, text = "Generated KML Files are located in the", height = 1, width = 40)
 listbox_info.config(font = ("Verdana", 12), background = "#332f31", fg = "#ffffff")
@@ -53,20 +54,55 @@ scrollbar.pack(side = "right", fill = "y")
 
 listbox.config(yscrollcommand = scrollbar.set)
 
+# create logger with 'spam_application'
+logger = logging.getLogger('')
+logger.setLevel(logging.DEBUG)
+
+# create file handler which logs even debug messages
+fh = logging.handlers.RotatingFileHandler('Logger.log', mode = 'w')
+fh.setLevel(logging.DEBUG)
+
+# create console handler with a higher log level
+ch = logging.StreamHandler()
+ch.setLevel(logging.ERROR)
+
+# create formatter and add it to the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+ch.setFormatter(formatter)
+
+# add the handlers to the logger
+logger.addHandler(fh)
+logger.addHandler(ch)
+
 def fileConverter():
     kmlToXmlInfo()
+    
+    logger = logging.getLogger('KML to XML')
+    
+    message.config(text = "KML files must be located in the '/KML Files' folder", background = "#332f31", fg = "#ffffff")
+    ftypes = [
+        ('XML Document', '*.xml'), 
+    ]
     try:
-        inputfile = askopenfile()
+        inputfile = askopenfile(mode = 'rt', filetypes = ftypes)
+        logger.info('Successfully opened ' + inputfile.name)
     except Exception:
-        msg = messagebox.showwarning("Warning", "You Must Select an XML File")
+        msg = messagebox.showwarning("Warning", "If 'Cancel' Button Pressed, Ignore This Message.\n\nIf File Selected, XML File May Be Corrupt. Please Select Another XML File.")
+        logger.info('ERROR opening ' + inputfile.name)
+        logger.info(Exception)
     tree = ET.parse(inputfile)
     root = tree.getroot()
 
     for case in root.findall("./ProjectSubmission"):
         caseNum = case.get('id')
+        logger.info("Case Number: " + str(caseNum))
+
         kmldata = open("KML Files/" + caseNum + ".kml", "rb").read()
+        logger.info("KML File: " + str(kmldata))
 
         kmlencoded = base64.b64encode(kmldata)
+        logger.info("Base64 Encoded KML File: " + str(kmlencoded))
 
         kmldecoded = base64.decodebytes(kmlencoded)
         
@@ -120,20 +156,31 @@ def fileConverter():
             isdocumentKLMuploadElement = locationFileElement.find("isdocumentKLMupload") 
             isdocumentKLMuploadElement.text = "KML"
             isdocumentKLMuploadElement.tail = "\n      "
-        tree.write(inputfile.name) 
+        tree.write(inputfile.name)
+        logger.info("Successfully wrote to " + str(inputfile.name)) 
     
-    message.config(text = "Task Completed!")
+    message.config(text = "XML File Has been Modified. Task Completed!", background = "#ffffff", fg = "#000000")
     msg = messagebox.showinfo("XML File Modified", "The KML files have successfully been added to the XML")
 
 def askForFile():
     csvToKmlInfo()
-    listbox.delete(0, END)
 
+    logger = logging.getLogger('CSV to KML')
+
+    message.config(text = "KML files must be located in the '/KML Files' folder", background = "#332f31", fg = "#ffffff")
+    listbox.delete(0, END)
+    ftypes = [
+        ('Microsoft Excel Comma Separated Values File', '*.csv'), 
+    ]
     try:
-        inputfile = list(csv.reader(askopenfile()))
+        inputopenfile = askopenfile(mode = 'rt', filetypes = ftypes)
+        logger.info('Successfully opened ' + str(inputopenfile.name))
     except Exception:
-        msg = messagebox.showwarning("Warning", "You Must Select a CSV File")
+        msg = messagebox.showwarning("Warning", "If 'Cancel' Button Pressed, Ignore This Message.\n\nIf File Selected, CSV File May Be Corrupt. Please Select Another CSV File.")
+        logger.info('ERROR opening ' + str(inputopenfile.name))
+        logger.info(Exception)
     
+    inputfile = list(csv.reader(inputopenfile))
     a = []
     dataList = []
     matchingGroup = []
@@ -152,6 +199,7 @@ def askForFile():
                 elif (prev[6] == "Fail"):
                     a += ["Data validation failed: ..." + caseNum[-4:]]
                     failedGroup += caseNum
+                    logger.info("ERROR in Generating KML for Case #: " + str(prev[0]))
                 kml = simplekml.Kml()
                 for data in dataList:
                     if(data[5] != "" and data[5] not in matchedGroup and data[0] not in failedGroup):
@@ -181,8 +229,10 @@ def askForFile():
                     if (data[6] == "Pass"):
                         try:
                             kml.save("KML Files/" + prev[0] + ".kml")
+                            logger.info("Generated KML for Case #: " + str(prev[0]))
                         except Exception:
-                            msg = messagebox.showerror("Error", "The KML For Case #: " + prev[0] + " Has Not Been Generated/Generated Correctly")
+                            msg = messagebox.showerror("ERROR", "The KML For Case #: " + prev[0] + " Has Not Been Generated/Generated Correctly")
+                            logger.info("ERROR in Generating KML for Case #: " + str(prev[0]))
                     del dataList[0:]
 
             dataList.append(row)
@@ -210,15 +260,20 @@ def askForFile():
                 if (data[6] == "Pass"):
                     try:
                         kml.save("KML Files/" + prev[0] + ".kml")
+                        logger.info("Generated KML for Case #: " + str(prev[0]))
                     except Exception:
-                        msg = messagebox.showerror("Error", "The KML For Case #: " + prev[0] + " Has Not Been Generated/Generated Correctly")
+                        msg = messagebox.showerror("ERROR", "The KML For Case #: " + prev[0] + " Has Not Been Generated/Generated Correctly")
+                        logger.info("ERROR in Generating KML for Case #: " + str(prev[0]))
                 elif (data[6] == "Fail"):
                     a += ["Data validation failed: ..." + caseNum[-4:]]
                     failedGroup += caseNum
+                    logger.info("ERROR in Generating KML for Case #: " + str(prev[0]))
 
         for item in a:
             listbox.insert(END, item) #  + ".kml"
         msg = messagebox.showinfo("Done", "Your KML Files Have Been Generated!")
+    
+    logger.info("Completed KML File Generation")
 def csvToKmlInfo():
     msg = messagebox.showinfo("Important Information About CSV Format", "The CSV must be formatted with the following headers in order from left to right: \n" + 
         "Case Number | Name | Description | Latitude | Longitude | Group(If Necessary) | Validation \n\n" + 
@@ -229,9 +284,9 @@ def kmlToXmlInfo():
                                 "<KLMdescription></KLMdescription>\n<KLMSubject></KLMSubject>\n<KLMuploadtxt></KLMuploadtxt>\n<file_name_fldLocation></file_name_fldLocation>\n<mimetypeKLMupload></mimetypeKLMupload>\n<isdocumentKLMupload></isdocumentKLMupload>")
 
 kmlToXmlButton = Button(tk, text = "KML to XML", font = thick_font3, command = fileConverter, height = 2, width = 15)
-kmlToXmlButton.pack(side = "right", pady = (15,20), padx = (0, 50))
+kmlToXmlButton.pack(side = "right", pady = (25,10), padx = (0, 50))
 
 csvToKmlButton = Button(tk, text = "CSV to KML", font = thick_font3, command = askForFile, height = 2, width = 15)
-csvToKmlButton.pack(side = "left", pady = (15,20), padx = (50, 0))
+csvToKmlButton.pack(side = "left", pady = (25,10), padx = (50, 0))
 
 tk.mainloop()
