@@ -1,5 +1,7 @@
 # CSV2KML2XML
 
+## Authors: Sohaib & Christina
+
 This program can convert csv to kml given that the csv file is formatted as: 
 
 | CaseNumber | Name | Description | Latitude | Longitude | Group (Necessary for LineString ONLY) | Validation |
