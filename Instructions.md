@@ -50,37 +50,35 @@ ___
     ```
 <br>
 
+___
 ## **Visual Representation of How to Use Application:** <a name="Visual-Rep"></a>
 
 <br>
 
-<!-- ![Start of the Application](C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/start.png "Start of the Application")<br> -->
-<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png" alt="KML Successfully Added to XML Popup"/></div>
+
+<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/start.png" alt="Start of the Application"/></div><br>
 This is what shows when the application is opened <br>
 
 What happens when you click each button:
 1. CSV to KML button: <br>
-Click the CSV to KML button:<br>
-<!-- ![CSV to KML button clicked](C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/start-selectcsvtokml.png "CSV to KML button clicked")<br> -->
-<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png" alt="KML Successfully Added to XML Popup"/></div>
+<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/start-selectcsvtokml.png" alt="CSV to KML button clicked"/></div><br>
 when you click the CSV to KML button, a popup will appear where you can select the **CSV (Comma Seperated Values)** file:<br>
-<!-- ![Select CSV File](C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/opencsv.png "Select CSV File")<br> -->
-<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png" alt="KML Successfully Added to XML Popup"/></div>
+<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/opencsv.png" alt="Select CSV File"/></div><br>
 You can only select CSV files as XLS and XLSX files are not supported.<br><br>
 Once the CSV file is selected, click open and this popup will show up when all KML files are successfully generated:<br>
-<!-- ![KML Successfully Generated Popup](C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/kmlgeneratepopup.png "KML Successfully Generated Popup")<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
-<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png" alt="KML Successfully Added to XML Popup"/></div>
+<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/kmlgeneratepopup.png" alt="KML Successfully Generated Popup"/></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
 The application list will appear like this:<br><br>
-<!-- ![KML File Names in List](C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/kmlgeneratelistview.png "KML File Names in List")<br> -->
-<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png" alt="KML Successfully Added to XML Popup"/></div>
+<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/kmlgeneratelistview.png" alt="KML File Names in List"/></div><br>
 The KML files that have successfully been generated will show in the list with the name of the file. The KML files that failed validation will show in the list as "Data validation failed: '...last 4 values of file name'".
-You can double click the file name in the list and it will open the kml file in any supported application (ie. Notepad, Notepad++, etc..).<br><br>
+You can double click the file name in the list and it will open the kml file in any supported application (ie. Notepad, Notepad++, etc..).<br><br><br><br><br>
+
 2. KML to XML button: <br><br>
-<!-- ![KML to XML button clicked](C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/start-selectkmltoxml.png "KML to XML button clicked")<br> -->
-<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png" alt="KML Successfully Added to XML Popup"/></div>
+<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/start-selectkmltoxml.png" alt="KML to XML button clicked"/></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 when you click the KML to XML button, a popup will appear where you can select the **XML** file:<br>
-<!-- ![Select CSV File](C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/openxml.png "Select CSV File")<br><br> -->
-<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png" alt="KML Successfully Added to XML Popup"/></div>
+<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/openxml.png" alt="Select CSV File"/></div><br>
 Once the XML file is selected, click open and this popup will show up when the KML files have successfully been added to the XML and will also show exceptions (if any) of which KML files were not added to the XML:<br>
-<!-- ![KML Successfully Added to XML Popup](C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png "KML Successfully Added to XML Popup")<br><br> -->
-<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png" alt="KML Successfully Added to XML Popup"/></div>
+<div style="text-align:center"><img src="C:/Users/MohiuddinSo/projects/CSV2KML2XML/screenshots/xmlgeneratepopup.png" alt="KML Successfully Added to XML Popup"/></div><br><br>
+
+3. More Info button: <br>
+The More Info button will open this pdf.
