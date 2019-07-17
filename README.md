@@ -4,8 +4,8 @@
 
 This program can convert csv to kml given that the csv file is formatted as: 
 
-| CaseNumber | Name | Description | Latitude | Longitude | Group (Necessary for LineString ONLY) | Validation |
-|------------|------|-------------|----------|-----------|---------------------------------------|------------|
+| CaseNumber | Name | Description | Latitude | Longitude | Group | Validation |
+|------------|------|-------------|----------|-----------|-------|------------|
 
 The Excel validation for the coordinates must be complete before using it in the program.
 
