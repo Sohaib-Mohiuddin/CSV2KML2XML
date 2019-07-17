@@ -21,11 +21,12 @@ dataList = []
 matchingGroup = []
 matchedGroup = []
 failedGroup = []
+genFiles = ''
 
 # Method to generate KML files from CSV
 def CSV2KML():
     # Initialize variables
-    global genCaseNumList, dataList
+    global genCaseNumList, dataList, genFiles
     logger = logging.getLogger('CSV to KML')
     listbox.delete(0, END)
 
@@ -48,6 +49,7 @@ def CSV2KML():
     # Initialize variables for KML generation
     prev = [""]*7
     last = inputfile[-1]
+    genFiles = True
 
     # If "KML Files" folder does not already exist, creates file
     os.makedirs(os.getcwd() + "/KML Files", exist_ok=True)
@@ -141,6 +143,7 @@ def KML2XML():
     try:
         inputfile = askopenfile(mode = 'rt', filetypes = ftypes)
         logger.info('Successfully opened ' + inputfile.name)
+        inputfile = inputfile.encode("ANSI")
     except Exception:
         logger.info('ERROR opening ' + inputfile.name)
         logger.info(Exception)
@@ -214,7 +217,7 @@ def KML2XML():
                 mimetypeKLMuploadElement.tail = "\n      "
 
                 isdocumentKLMuploadElement = ET.SubElement(locationFileElement, "isdocumentKLMupload") 
-                isdocumentKLMuploadElement.text = "True"
+                isdocumentKLMuploadElement.text = "KML"
                 isdocumentKLMuploadElement.tail = "\n      "
             # Insert KML elements if tags already exist
             else:
@@ -243,7 +246,7 @@ def KML2XML():
                 isdocumentKLMuploadElement.tail = "\n      "
             
             # Update XML with changed elements
-            tree.write(inputfile.name)
+            tree.write(inputfile.name, encoding = "ANSI")
             logger.info("Successfully wrote to " + str(inputfile.name)) 
         except Exception: # Exception to catch if KML files are not found
             failedCases.append(str(caseNum))
@@ -259,7 +262,7 @@ def KML2XML():
 # Method to open file if double clicked in listbox
 def selectOpenFile():
     fileName = listbox.get("active")
-    os.startfile(os.getcwd() + "\\KML Files\\" + fileName + ".kml")
+    os.startfile(os.getcwd() + "\\KML Files\\" + fileName)
 
 def resource_path(relative_path):
     try:
@@ -289,6 +292,7 @@ tk.geometry("400x650")
 tk.title("CSV2KML2XML")
 tk.resizable(False, False)
 tk.configure(background = "#332f31")
+tk.iconbitmap(resource_path('S&C Icon.ico'))
 
 # Fonts
 titleFont = Font(family = "Verdana", weight = "bold", size = "25")
@@ -355,7 +359,7 @@ logger.addHandler(fh)
 logger.addHandler(ch)
 
 # Array to display all previously existing files, if any
-if(os.path.exists(os.getcwd() + "\\KML Files")):
+if(os.path.exists(os.getcwd() + "\\KML Files") and genFiles != True):
     genCaseNumList = os.listdir(os.getcwd() + "\\KML Files")
     for case in genCaseNumList:
         # case = case[:-4]
