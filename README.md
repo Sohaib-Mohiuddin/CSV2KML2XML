@@ -11,10 +11,12 @@ The Excel validation for the coordinates must be complete before using it in the
 
 This program can also base64 encode kml files and insert the base64 encoding and kml information into the xml with 6 tags modified:
 ```xml
-<KLMdescription></KLMdescription>
-<KLMSubject></KLMSubject>
-<KLMuploadtxt></KLMuploadtxt>
-<file_name_fldLocation></file_name_fldLocation>
-<mimetypeKLMupload></mimetypeKLMupload>
-<isdocumentKLMupload></isdocumentKLMupload>
+<LocationFile>
+    <KLMdescription></KLMdescription>
+    <KLMSubject></KLMSubject>
+    <KLMuploadtxt></KLMuploadtxt>
+    <file_name_fldLocation></file_name_fldLocation>
+    <mimetypeKLMupload></mimetypeKLMupload>
+    <isdocumentKLMupload></isdocumentKLMupload>
+</LocationFile>
 ```
