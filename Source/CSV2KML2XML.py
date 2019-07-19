@@ -41,7 +41,6 @@ def CSV2KML():
         logger.info('Successfully opened ' + str(inputfile.name))
     except Exception:
         logger.info('ERROR opening ' + str(inputfile.name))
-        logger.info(Exception)
     
     # Convert file contents to list
     inputfile = list(csv.reader(inputfile))
@@ -146,7 +145,6 @@ def KML2XML():
         inputfile = inputfile.encode("ANSI")
     except Exception:
         logger.info('ERROR opening ' + inputfile.name)
-        logger.info(Exception)
 
     # Parse through XML tree
     try:
@@ -248,6 +246,7 @@ def KML2XML():
             # Update XML with changed elements
             tree.write(inputfile.name, encoding = "ANSI")
             logger.info("Successfully wrote to " + str(inputfile.name)) 
+            changeXmlEncoding(inputfile.name)
         except Exception: # Exception to catch if KML files are not found
             failedCases.append(str(caseNum))
             logger.info("File Not Found: " + str(caseNum))  
@@ -258,6 +257,20 @@ def KML2XML():
     else:
         failedCasesStr = '\n'.join(failedCases)
         messagebox.showinfo("XML File Modified", "Some KML files were successfully added to the XML. \n\nThe following KMLs were not found:\n" + failedCasesStr)
+
+def changeXmlEncoding(filename):
+    logger = logging.getLogger('Replace ANSI with UTF-8')
+    try:
+        with open(filename, 'r') as fin:
+            data = fin.read().splitlines(True)
+            logger.info("Successfully read " + filename)
+        with open(filename, 'w') as fout:
+            fout.writelines(data[1:])
+            logger.info("Successfully deleted line " + filename)
+    except Exception:
+        logger.info("ERROR reading/writing to " + filename)
+    # with open(filename, 'w') as f:
+    #     f.writelines([1:])
 
 # Method to open file if double clicked in listbox
 def selectOpenFile():
