@@ -36,7 +36,9 @@ ___
     | CaseNumber | Name | Description | Latitude | Longitude | Group | Validation |
     |------------|------|-------------|----------|-----------|-------|------------|
 
-3. Please ensure the XML being used follows the formatting of the federal government.
+3. Formula for CSV coordinate validation:<br>**=IF(AND(41.416723<$D2,$D2<56.85012, -95.15699<$E2, $E2<-71.30798),"Pass","Fail")**
+4. The CSV **MUST** be sorted by Case Number.
+5. Please ensure the XML being used follows the formatting of the federal government.
    
    <span style="color:red;font-weight: bold;">IMPORTANT</span>: Make sure that the XML hierarchy is as follows:
    ```xml
