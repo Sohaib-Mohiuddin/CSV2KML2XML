@@ -39,8 +39,9 @@ def CSV2KML():
     try:
         inputfile = askopenfile(mode = 'rt', filetypes = ftypes)
         logger.info('Successfully opened ' + str(inputfile.name))
-    except Exception:
+    except Exception as e:
         logger.info('ERROR opening ' + str(inputfile.name))
+        logger.info(e)
     
     # Convert file contents to list
     inputfile = list(csv.reader(inputfile))
@@ -142,14 +143,15 @@ def KML2XML():
     try:
         inputfile = askopenfile(mode = 'rt', filetypes = ftypes)
         logger.info('Successfully opened ' + inputfile.name)
-        inputfile = inputfile.encode("ANSI")
-    except Exception:
+        inputfile = open(inputfile.name, encoding = "ANSI")
+    except Exception as e:
         logger.info('ERROR opening ' + inputfile.name)
+        logger.info(e)
 
     # Parse through XML tree
     try:
         tree = ET.parse(inputfile)
-    except Exception:
+    except ET.ParseError:
         xmlFormattingError()
         os._exit(0)
 
@@ -247,9 +249,10 @@ def KML2XML():
             tree.write(inputfile.name, encoding = "ANSI")
             logger.info("Successfully wrote to " + str(inputfile.name)) 
             changeXmlEncoding(inputfile.name)
-        except Exception: # Exception to catch if KML files are not found
+        except Exception as e: # Exception to catch if KML files are not found
             failedCases.append(str(caseNum))
             logger.info("File Not Found: " + str(caseNum))  
+            logger.info(e)
     
     # Display different message depending on whether or not all/some of the KMLs were added into the XML
     if(len(failedCases) == 0):
@@ -261,14 +264,15 @@ def KML2XML():
 def changeXmlEncoding(filename):
     logger = logging.getLogger('Replace ANSI with UTF-8')
     try:
-        with open(filename, 'r') as fin:
+        with open(filename, 'r', encoding = "ANSI") as fin:
             data = fin.read().splitlines(True)
             logger.info("Successfully read " + filename)
-        with open(filename, 'w') as fout:
+        with open(filename, 'w', encoding = "ANSI") as fout:
             fout.writelines(data[1:])
             logger.info("Successfully deleted line " + filename)
-    except Exception:
+    except Exception as e:
         logger.info("ERROR reading/writing to " + filename)
+        logger.info(e)
     # with open(filename, 'w') as f:
     #     f.writelines([1:])
 
