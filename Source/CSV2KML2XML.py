@@ -40,8 +40,8 @@ def CSV2KML():
         inputfile = askopenfile(mode = 'rt', filetypes = ftypes)
         logger.info('Successfully opened ' + str(inputfile.name))
     except Exception as e:
-        logger.info('ERROR opening ' + str(inputfile.name))
-        logger.info(e)
+        logger.warning('ERROR opening ' + str(inputfile.name))
+        logger.warning(e)
     
     # Convert file contents to list
     inputfile = list(csv.reader(inputfile))
@@ -81,6 +81,7 @@ def CSV2KML():
 # Method to generate KML elements
 def generateKML(prev, row):
     # Initialize variables
+    logger = logging.getLogger('CSV to KML')
     global genCaseNumList, dataList, matchingGroup, matchedGroup, failedGroup
     kml = simplekml.Kml()
     caseNum = prev[0]
@@ -108,6 +109,13 @@ def generateKML(prev, row):
                 matchedGroup.append(firstRow[5])
                 # Empty contents of group matching for
                 del matchingGroup[0:]
+            elif (len(matchingGroup) == 1):
+                newpoint = kml.newpoint(name = data[1], description = data[2], coords = [(data[4],data[3])])
+                # Styling for outcome points
+                if("Outcome" not in data[1]):
+                    newpoint.style.iconstyle.color = simplekml.Color.red
+                del matchingGroup[0:]
+
         # If data is not part of group or failed case number, generate point
         elif (data[5] == "" and data[0] not in failedGroup):
             newpoint = kml.newpoint(name = data[1], description = data[2], coords = [(data[4],data[3])])
@@ -125,8 +133,9 @@ def generateKML(prev, row):
         elif (data[6] == "Fail"):
             genCaseNumList += ["Data validation failed: ..." + caseNum[-4:]]
             failedGroup += caseNum
-            logger.info("ERROR in Generating KML for Case #: " + str(prev[0]))
+            logger.warning("ERROR in Generating KML for Case #: " + str(prev[0]))
         del dataList[0:]
+
         
 # Method to insert encoded KML files into the XML 
 def KML2XML():
@@ -145,8 +154,8 @@ def KML2XML():
         logger.info('Successfully opened ' + inputfile.name)
         inputfile = open(inputfile.name, encoding = "ANSI")
     except Exception as e:
-        logger.info('ERROR opening ' + inputfile.name)
-        logger.info(e)
+        logger.warning('ERROR opening ' + inputfile.name)
+        logger.warning(e)
 
     # Parse through XML tree
     try:
@@ -251,8 +260,8 @@ def KML2XML():
             changeXmlEncoding(inputfile.name)
         except Exception as e: # Exception to catch if KML files are not found
             failedCases.append(str(caseNum))
-            logger.info("File Not Found: " + str(caseNum))  
-            logger.info(e)
+            logger.warning("File Not Found: " + str(caseNum))  
+            logger.warning(e)
     
     # Display different message depending on whether or not all/some of the KMLs were added into the XML
     if(len(failedCases) == 0):
@@ -271,8 +280,8 @@ def changeXmlEncoding(filename):
             fout.writelines(data[1:])
             logger.info("Successfully deleted line " + filename)
     except Exception as e:
-        logger.info("ERROR reading/writing to " + filename)
-        logger.info(e)
+        logger.warning("ERROR reading/writing to " + filename)
+        logger.warning(e)
     # with open(filename, 'w') as f:
     #     f.writelines([1:])
 
@@ -291,15 +300,21 @@ def resource_path(relative_path):
 
 # Method to pull up "More Information" document
 def displayMoreInfo():
+    logger = logging.getLogger('More Info')
+    logger.info('Instructions.pdf Opened')
     file = "Instructions.pdf"
     os.startfile(resource_path(file))
 
 # Method that displays error message if CSV is not formatted properly
 def csvFormattingError():
+    logger = logging.getLogger('CSV Formatting Error')
+    logger.warning('The CSV is missing a required column. Please see the formatting guidelines under the More Info button.')
     messagebox.showinfo("ERROR", "The CSV is missing a required column. Please see the formatting guidelines under the 'More Info' button.")
 
 # Method that displays error message if XML is not formatted properly
 def xmlFormattingError():
+    logger = logging.getLogger('XML Formatting Error')
+    logger.warning('The XML does not follow the correct format. Please see the formatting guidelines under the More Info button.')
     messagebox.showinfo("ERROR", "The XML does not follow the correct format. Please see the formatting guidelines under the 'More Info' button.")
 
 # GUI Elements 
